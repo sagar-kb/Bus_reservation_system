@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="./css/home.css">
+    <link rel="icon" href="./data/logo.png" type="image/icon type">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css1/admin.css">
+    <link rel="stylesheet" href="./css1/deletebutton.css">
+    <link rel="stylesheet" href="./css1/table.css">
+     
+    <!-- Iconscout CSS -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-straight/css/uicons-regular-straight.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css">
+</head>
+<body>
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+               <img src="images/logo.png" alt="">
+            </div>
+            <span class="logo_name">Safar.com</span>
+        </div>
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="home.html">
+                    <i class="uil uil-estate"></i>
+                    <span class="link-name">Home</span>
+                </a></li>
+                <li><a  id="reservation4Link" class="box box2" href="">
+                    <i class="fi fi-rr-memo-circle-check"></i>
+                    <span class="link-name">Reservations</span>
+                </a></li>
+                
+                <li><a  id="available4RoutesLink" class="box box1" href="">
+                    <i class="fi fi-rs-route"></i>
+                    <span class="text">Routes</span>
+                    <span id="route" class="number"></span>
+                </a></li>
+            </ul>
+            <ul class="logout-mode">
+                <li><a id="popupButton">
+                    <i class="uil uil-signout"></i>
+                    <span class="link-name">Logout</span>
+                </a></li>
+                <li class="mode">
+                    <a href="#">
+                        <i class="uil uil-moon"></i>
+                        <span class="link-name">Dark Mode</span>
+                    </a>
+                    <div class="mode-toggle">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="dashboard">
+        <div class="top">
+            <i class="uil uil-bars sidebar-toggle"></i>
+        </div>
+        <div class="popup" id="popupMessage">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <p>Are you sure you want to sign out?</p>
+            <button id="signout">Logout</button>
+        </div>
+        <div class="dash-content">
+            <div class="overview">
+                <div class="title">
+                    <i class="uil uil-tachometer-fast-alt"></i>
+                    <span class="text">Home</span>
+                </div>
+                <div class="boxes">
+						<a id="availableRoutesLink" class="box box1" href="" style="margin-left: 100px;">
+                        <i class="fi fi-rr-route"></i>
+                        <span class="text">Routes</span>
+                        <span id="route" class="number"></span>
+                    </a>
+                    <a id="reservationLink" class="box box2" href="" style="margin-right: 255px;">
+                            <i class="fi fi-rr-memo-circle-check"></i>
+                            <span class="text">Reservations</span>
+                            <span id="reservation" class="number"></span>
+                        </a>
+                            
+						
+                    
+                </div>
+            </div>
+        </div>
+        
+    </section>
+    <script>
+    // Function to get the value of a URL parameter by name
+    function getUrlParameter(name) {
+        name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
+        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+        var results = regex.exec(location.search);
+        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    };
+
+    // Get the value of the 'id' parameter from the URL
+    var id = getUrlParameter('id');
+
+    // Construct the URL with the 'id' parameter and set it as the href attribute of the anchor tag
+    document.getElementById('availableRoutesLink').href = "available_routes?id=" + id;
+    document.getElementById('reservationLink').href = "reservations?id=" + id;
+    
+    document.getElementById("available4RoutesLink").href = "available_routes?id=" + id;
+    document.getElementById('reservation4Link').href = "reservations?id=" + id;
+    
+
+</script>
+
+    <script src="./js/admin.js"></script>
+    <script src="./js/modeToggle.js"></script>
+    <script src="./js/adminLogout.js"></script>
+    <script src="./js/home.js"></script>
+</body>
+</html>

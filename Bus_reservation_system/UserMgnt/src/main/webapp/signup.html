@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="ISO-8859-1">
+   
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safar.com</title>
+    <link rel="icon" href="./data/logo.png" type="image/icon type">
+    
+    <link rel="stylesheet" href="./css1/login.css">
+    <link rel="stylesheet" href="./css1/pop.css">
+</head>
+<body>
+    <section>
+        <div class="main">
+            <div class="bus-img">
+                <img src="./data/trip.jpg" alt="">
+            </div>
+
+            <div>
+                <div class="wrapper">
+                    <div class="title-text">
+                      <div class="title signup">Signup Form</div>
+                    </div>
+                    <div class="form-container">
+                      <div class="slide-controls">
+                        <input type="radio" name="slide" id="login" checked>
+                        <input type="radio" name="slide" id="signup">
+                        <button  id="loginButton" class="slide login">Login</button>
+                        <label for="signup" class="slide signup">Signup</label>
+                        <div class="slider-tab"></div>
+                      </div>
+						<div class="form-inner">
+						
+                       
+
+
+
+                        <form action="siginup" method="post" class="signup">
+                          <div class="field">
+                            <input type="text" placeholder="Full Name" name="userName" required>
+                          </div>
+                          <div class="field">
+                            <input type="email" placeholder="Email Address" name="email" required>
+                          </div>
+                          <div class="field">
+                            <input type="text" placeholder="Mobile Number" name="mobile" required>
+                          </div>
+                          <div class="field">
+                            <input type="password" placeholder="Password" name="password" required>
+                          </div>
+                          <div class="field btn">
+                            <div class="btn-layer"></div>
+                            <input id="sign" type="submit" value="Signup">
+                          </div>
+                        </form>
+                     </div>
+                    </div>
+                  </div>  
+            </div>
+        </div>
+    </section>
+    
+    <script>
+    const signupButton = document.getElementById("loginButton");
+
+    signupButton.addEventListener("click", function(event) {
+        // Redirect to the signup page
+        window.location.href = "login.html";
+    });
+</script>
+    
+</body>
+</html>
+
+<script src="./js/signup.js"></script>

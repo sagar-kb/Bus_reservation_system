@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Ticket</title>
+<link rel="stylesheet" href=".css">
+<style>
+    body {
+        background-size: cover;
+        background-position: center;
+        color: #fff;
+    }
+    #frm {
+        width: 500px;
+        margin: auto;
+        margin-top: 70px;
+        background-color: rgb(0, 0, 0);
+        padding: 20px;
+        border-radius: 10px;
+    }
+    marquee 
+    {
+        margin-top: 25px;
+    }
+    .form-control {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: #fff;
+    }
+    .form-control:focus {
+        background-color: rgba(255, 255, 255, 0.3);
+        color: #fff;
+    }
+    .text-white {
+        color: #fff !important;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <form action="bookticket" class="form card" id="frm" onsubmit="return validateForm()">
+        <h2 class="bg-danger text-white card-header">Ticket Booking</h2>
+        <div class="table-responsive">
+            <table class="table table-hover" style="color:white">
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" name="userName" class="form-control" required></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input type="email" name="email" class="form-control" required></td>
+                </tr>
+                <tr>
+                    <td>Mobile</td>
+                    <td><input type="text" name="mobile" class="form-control" required pattern="[0-9]{10}" title="Please enter a 10-digit phone number"></td>
+                </tr>
+                 
+                <tr>
+                    <td>Gender</td>
+                    <td>
+                        <div class="form-check">
+                            <input type="radio" name="gender" class="form-check-input" value="male" id="male">
+                            <label for="male" class="form-check-label text-white">Male</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" name="gender" class="form-check-input" value="female" id="female">
+                            <label for="female" class="form-check-label text-white">Female</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Date</td>
+                    <td><input type="date" id="bookingDate" name="date" class="form-control" style="color:red" required readonly></td>
+                </tr>
+                <tr>
+                    <td>Source</td>
+                    <td><input type="text" id="bookingSource" name="source" class="form-control" style="color:red" required readonly></td>
+                    
+                </tr>
+                <tr>
+                    <td>Destination</td>
+                    <td><input type="text" id="bookingDestination" name="destination" class="form-control" style="color:red" required readonly></td>
+                    
+                </tr>
+                <tr>
+                    <td>Price</td>
+                    <td><input type="text" id="price" name="price" value="1000 rs"class="form-control" style="color:red" required readonly></td>
+                    
+                </tr>
+                <tr>
+                    <td>uid</td>
+                    <td><input type="text" id="bookingUid" name="uid" class="form-control" style="color:red" required readonly></td>
+                    
+                </tr>
+                <tr class="card-footer">
+                    <td><button type="submit" class="btn btn-outline-success">Book Ticket</button></td>
+                </tr>
+				<tr>
+				    <td><button type="button" class="btn btn-outline-danger" onclick="cancelBooking()">Cancel</button></td>
+				</tr>
+            	
+            </table>
+        </div>
+    </form>
+</div>
+
+
+
+
+
+
+
+<script>
+
+function cancelBooking() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id');
+    window.location.href = "home.html?id=" + id;
+}
+
+        window.onload = function() {
+            // Extract URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            // Get date, source, and destination values from URL parameters
+            const date = urlParams.get('date');
+            const source = urlParams.get('source');
+            const destination = urlParams.get('destination');
+            const id= urlParams.get('id');
+            // Set default values for date, source, and destination input fields
+            document.getElementById('bookingDate').value = date;
+            document.getElementById('bookingSource').value = source;
+            document.getElementById('bookingDestination').value = destination;
+            document.getElementById('bookingUid').value = id;
+			
+            
+        };
+
+        function validateForm() {
+            var selectedDate = new Date(document.getElementById('bookingDate').value);
+            var currentDate = new Date();
+            currentDate.setHours(0, 0, 0, 0); // Set time to midnight for comparison
+
+            if (selectedDate < currentDate) {
+                alert("Please select a date that is not in the past.");
+                return false;
+            }
+            // Here you can add logic to check if the selected table is already booked for the selected date
+            // This validation requires server-side code to interact with a database
+            return true;
+        }
+        
+        
+       
+   </script>
+</body>
+</html>
